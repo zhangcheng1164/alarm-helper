@@ -1,0 +1,62 @@
+{
+  "name": "cloud-alert-sms",
+  "version": "1.0.0",
+  "description": "send alert short message by Tencent cloud api",
+  "main": "dist/index.js",
+  "module": "esm/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commit": "git-cz",
+    "lint": "eslint src",
+    "type-check": "tsc --noEmit",
+    "dev": "nodemon --exec babel-node ./src/index.ts --extensions .ts ",
+    "clean": "shx rm -rf dist && shx rm -rf esm",
+    "prepare": "npm run clean && npm run lint && tsc ",
+    "build-esm": "shx rm -rf esm && eslint src && tsc --emitDeclarationOnly --outDir esm && cross-env TARGET=esm  babel src -d esm --extensions .ts",
+    "build-cjs": "shx rm -rf dist && eslint src && tsc --emitDeclarationOnly --outDir dist && babel src -d dist --extensions .ts",
+    "build": "npm run build-esm && npm run build-cjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.12.8",
+    "@babel/core": "^7.12.9",
+    "@babel/node": "^7.12.6",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/preset-typescript": "^7.12.7",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@types/node": "^14.14.10",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
+    "commitizen": "^4.2.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.14.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
+    "nodemon": "^2.0.6",
+    "prettier": "^2.2.1",
+    "shx": "^0.3.3",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "@babel/runtime-corejs3": "^7.12.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
+    }
+  }
+}
