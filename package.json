@@ -1,6 +1,6 @@
 {
   "name": "cloud-alarm-helper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "send alert short message by Tencent cloud api",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -15,7 +15,11 @@
     "build-cjs": "shx rm -rf lib && eslint src && tsc --emitDeclarationOnly --outDir lib && babel src -d lib --extensions .ts",
     "build": "npm run build-esm && npm run build-cjs"
   },
-  "files": ["esm", "lib", "src"],
+  "files": [
+    "esm",
+    "lib",
+    "src"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
