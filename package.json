@@ -1,5 +1,5 @@
 {
-  "name": "cloud-alert-sms",
+  "name": "cloud-alarm",
   "version": "1.0.0",
   "description": "send alert short message by Tencent cloud api",
   "main": "lib/index.js",
@@ -19,6 +19,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "homepage": "https://github.com/zhangcheng1164/cloud-alarm",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangcheng1164/cloud-alarm.git"
+  },
   "devDependencies": {
     "@babel/cli": "^7.12.8",
     "@babel/core": "^7.12.9",
