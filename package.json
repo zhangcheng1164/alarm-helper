@@ -1,5 +1,5 @@
 {
-  "name": "cloud-alarm",
+  "name": "alarm-helper",
   "version": "1.0.0",
   "description": "send alert short message by Tencent cloud api",
   "main": "lib/index.js",
@@ -18,10 +18,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://github.com/zhangcheng1164/cloud-alarm",
+  "homepage": "https://github.com/zhangcheng1164/alarm-helper",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zhangcheng1164/cloud-alarm.git"
+    "url": "git+https://github.com/zhangcheng1164/alarm-helper.git"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.8",
