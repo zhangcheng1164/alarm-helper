@@ -1,5 +1,5 @@
 {
-  "name": "alarm-helper",
+  "name": "cloud-alarm-helper",
   "version": "1.0.0",
   "description": "send alert short message by Tencent cloud api",
   "main": "lib/index.js",
@@ -15,13 +15,14 @@
     "build-cjs": "shx rm -rf lib && eslint src && tsc --emitDeclarationOnly --outDir lib && babel src -d lib --extensions .ts",
     "build": "npm run build-esm && npm run build-cjs"
   },
+  "files": ["esm", "lib", "src"],
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://github.com/zhangcheng1164/alarm-helper",
+  "homepage": "https://github.com/zhangcheng1164/cloud-alarm-helper",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zhangcheng1164/alarm-helper.git"
+    "url": "git+https://github.com/zhangcheng1164/cloud-alarm-helper.git"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.8",
