@@ -17,31 +17,38 @@ export class AlarmService extends EventEmitter {
     this.logger = logger ?? this.logger
   }
 
-  async setSmsAlarm(
-    phonesGetter: NoEmptyArrayGetter<string>,
+  setSmsAlarm(
+    phonesGetter: () => Promise<string[]>,
     smsConfig: SmsConfig
-  ): Promise<void> {
+  ): void {
     this.sms = new TencentCloudSms(smsConfig, this.logger)
-    const phones = await phonesGetter()
 
-    this.on('alarm', (msg: string, engineAddress: string) => {
-      this.sms?.sendShortMessage(phones, [msg, engineAddress])
+    this.on('alarm', async (msg: string, engineAddress: string) => {
+      const phones = await phonesGetter()
+      if (phones.length) {
+        this.sms?.sendShortMessage(phones as NonEmptyArray<string>, [
+          msg,
+          engineAddress,
+        ])
+      }
     })
   }
 
-  async setDmsAlarm(
-    emailsGetter: NoEmptyArrayGetter<string>,
+  setDmsAlarm(
+    emailsGetter: () => Promise<string[]>,
     dmsConfig: DmsConfig
-  ): Promise<void> {
-    const emails = await emailsGetter()
+  ): void {
     this.dms = new AliyunDms(dmsConfig, this.logger)
 
-    this.on('alarm', (msg: string, engineAddress: string) => {
-      this.dms?.sendEmail(
-        emails,
-        '云告警',
-        `告警内容: ${msg}, 告警平台: ${engineAddress}`
-      )
+    this.on('alarm', async (msg: string, engineAddress: string) => {
+      const emails = await emailsGetter()
+      if (emails.length) {
+        this.dms?.sendEmail(
+          emails as NonEmptyArray<string>,
+          '云告警',
+          `告警内容: ${msg}, 告警平台: ${engineAddress}`
+        )
+      }
     })
   }
 
