@@ -33,6 +33,7 @@ module.exports = {
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
     'no-useless-constructor': 'off',
+    'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'no-console': 'off',
     'import/extensions': [
       'error',
