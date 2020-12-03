@@ -36,10 +36,13 @@ export class AliyunDms {
 
     await this.client.request('SingleSendMail', params, requestOption).then(
       (result) => {
-        this.logger.info('use Tencent cloud sending email successfully', result)
+        this.logger.info(
+          'use Tencent cloud sending email successfully!',
+          result
+        )
       },
       (ex) => {
-        this.logger.error('use Tencent cloud sending email unsuccessfully', ex)
+        this.logger.error('use Tencent cloud sending email unsuccessfully!', ex)
       }
     )
   }
